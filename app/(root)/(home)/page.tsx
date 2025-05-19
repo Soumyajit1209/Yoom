@@ -1,16 +1,25 @@
 import MeetingTypeList from '@/components/MeetingTypeList';
 
 const Home = () => {
-  const now = new Date();
+  const getIndianTime = () => {
+    const now = new Date();
+    const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
+    
+    return istTime;
+  };
+  
+  const indianTime = getIndianTime();
 
-  const time = now.toLocaleTimeString('en-IN', {
+  const time = indianTime.toLocaleTimeString('en-IN', {
     hour: '2-digit',
     minute: '2-digit',
     hour12: true
   });
+  
   const date = new Intl.DateTimeFormat('en-IN', { 
     dateStyle: 'full' 
-  }).format(now);
+  }).format(indianTime);
 
   return (
     <section className="flex size-full flex-col gap-5 text-white">
