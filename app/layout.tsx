@@ -5,6 +5,8 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs'
 
+import { Analytics } from "@vercel/analytics/next"
+
 import { Toaster } from "@/components/ui/toaster";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import 'react-datepicker/dist/react-datepicker.css'
@@ -43,6 +45,7 @@ export default function RootLayout({
       >
       <body className={`${inter.className}bg-dark-2`}>{children}
         <Toaster/>
+        <Analytics />
       </body>
       </ClerkProvider>
     </html>
